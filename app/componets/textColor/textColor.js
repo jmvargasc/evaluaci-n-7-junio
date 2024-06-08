@@ -12,18 +12,36 @@ class TextCOlor  extends LitElement {
 
   static get properties() {
     return {
-        arrayNums: {type: Array},
+        colores: {type: Array},
     };
   }
 
   constructor() {
     super();
-    this.arrayNums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"];
+    this.colores = [];
   }
 
 textColor(){
     let text = this.shadowRoot.querySelector('#text-color');
-    text.style.color = "blue";
+
+    var num=(Math.floor(Math.random()*4)*4).toString(16);
+    var letters = ['0','F',num];
+    var color = '#';
+    
+    for (var i = 0; i < 3; i++ ) {
+        let pos=Math.floor(Math.random() * letters.length);
+        color += letters[pos];
+        letters.splice(pos,1);
+    }
+    
+    //para evitar que se repitan colores 
+    if(this.colores.includes(color))
+      return color;
+    else
+      this.colores.push(color)
+      
+      text.style.color = color;
+    return color;
 
 
 }

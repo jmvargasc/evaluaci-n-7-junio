@@ -15,40 +15,44 @@ class ArrayPets  extends LitElement {
 
   static get properties() {
     return {
-        pets: {type: Array}
+        pets: {type: Array},
+
     };
   }
 
   constructor() {
     super();
     this.pest = [
-        {name: "Perro"},
-        {name: "Gato"},
-        {name: "Perico"},
-        {name: "Aguila"},
-        {name: "Tiburon"},
-        {name: "Coyote"},
-        {name: "Leon"},
-        {name: "Jirafa"},
-        {name: "Cerpiente"},
-        {name: "Tigre"},
+        "Perro",
+        "Gato",
+        "Perico",
+        "Aguila",
+        "Tiburon",
+        "pez",
+        "Coyote",
+        "Leon",
+        "Jirafa",
+        "Cerpiente",
+        "Tigre",
+        
     ];
   }
 
-showPest(pest){
-  console.log('click animals')
+showPest(){
 
-  for( let i = 0; i < pest.length; i++){
-    for( let j = 0; j < (pest.length - i - 1); j++ ){
+  for( let i = 0; i < this.pest.length; i++){
+    for( let j = 0; j < (this.pest.length - i - 1); j++ ){
         
-        if( pest[j].length < pest[j + 1].length ) {                
-            let temp = pest[j]
-            pest[j] = pest[j + 1]
-            pest[j + 1] = temp
+        if( this.pest[j].length < this.pest[j + 1].length ) {                
+            let temp = this.pest[j]
+            this.pest[j] = this.pest[j + 1]
+            this.pest[j + 1] = temp
         }
     }
   }
-  this.requestUpdate();
+
+  this.update(this.pest);
+  
 }
 
   render() {
@@ -58,10 +62,10 @@ showPest(pest){
         <button @click="${this.showPest}">ordenar</button>
         <ul>
             ${this.pest.map( e => html`
-                
-                <li>${e.name}</li>
+                <li>${e}</li>
             `
             )}
+
         </ul>
     `;
   }
