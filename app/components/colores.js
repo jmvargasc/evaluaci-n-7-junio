@@ -4,7 +4,8 @@ export class Colores extends LitElement {
     static styles = [
         css`
             :host {
-                display: block;
+                display: block; //propiedades sirven para que pueda modifcar no es publica-varibale no la podemos modificar privada
+
             }
         `
     ];
